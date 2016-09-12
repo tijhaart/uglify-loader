@@ -3,12 +3,12 @@ var loaderUtils = require('loader-utils');
 
 module.exports = function(source, inputSourceMap) {
     var callback = this.async();
+    var opts = loaderUtils.getLoaderConfig(this, 'uglify-loader');
 
     if (this.cacheable) {
         this.cacheable();
     }
 
-    var opts = this.options['uglify-loader'] || {};
     // just an indicator to generate source maps, the output result.map will be modified anyway
     // tell UglifyJS2 not to emit a name by just setting outSourceMap to true
     opts.outSourceMap = true;
